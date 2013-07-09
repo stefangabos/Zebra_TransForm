@@ -3,7 +3,11 @@
     "title": "Zebra_Transform",
     "description": "A tiny jQuery plugin for styling the appearance of check boxes, radio buttons and select boxes",
     "keywords": [
-        "tooltip",
+        "form",
+        "input",
+        "checkbox",
+        "radio",
+        "replacement",
         "ui"
     ],
     "version": "2.3.2",
