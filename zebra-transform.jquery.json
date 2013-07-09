@@ -1,0 +1,33 @@
+{
+    "name": "zebra-transform",
+    "title": "Zebra_Transform",
+    "description": "A tiny jQuery plugin for styling the appearance of check boxes, radio buttons and select boxes",
+    "keywords": [
+        "tooltip",
+        "ui"
+    ],
+    "version": "2.3.2",
+    "author": {
+        "name": "Stefan Gabos",
+        "url": "http://stefangabos.ro/"
+    },
+    "maintainers": [
+        {
+            "name": "Stefan Gabos",
+            "url": "http://stefangabos.ro/"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "LGPL",
+            "url": "https://github.com/stefangabos/Zebra_Transform/blob/master/license.txt"
+        }
+    ],
+    "bugs": "http://stefangabos.ro/jquery/zebra-transform/#how-to-use",
+    "homepage": "http://stefangabos.ro/jquery/zebra-transform/",
+    "docs": "http://stefangabos.ro/jquery/zebra-transform/#how-to-use",
+    "download": "http://stefangabos.ro/jquery/zebra-transform/#download",
+    "dependencies": {
+        "jquery": ">=1.5.2"
+    }
+}
