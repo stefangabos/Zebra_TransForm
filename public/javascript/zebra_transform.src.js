@@ -1,7 +1,7 @@
 /**
  *  Zebra_TransForm
  *
- *  A tiny (3KB minified) jQuery plugin for styling the appearance of checkboxes, radio buttons and select boxes without
+ *  A tiny (4KB minified) jQuery plugin for styling the appearance of checkboxes, radio buttons and select boxes without
  *  sacrificing functionality and accessibility: the elements preserve their <em>tabindex</em>, give visual feedback when
  *  having the focus, can be accessed by using the keyboard, and look and behave in the same way in all major browsers.
  *
@@ -10,7 +10,7 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.3.2 (last revision: July 09, 2013)
+ *  @version    2.3.3 (last revision: July 10, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_TransForm
@@ -450,44 +450,44 @@
         // since with jQuery 1.9.0 the $.browser object was removed, we rely on this piece of code from
         // http://www.quirksmode.org/js/detect.html to detect the browser
         var browser = {
-        	init: function () {
-        		this.name = this.searchString(this.dataBrowser) || '';
-        		this.version = this.searchVersion(navigator.userAgent)
-        			|| this.searchVersion(navigator.appVersion)
-        			|| '';
-        	},
-        	searchString: function (data) {
-        		for (var i=0;i<data.length;i++)	{
-        			var dataString = data[i].string;
-        			var dataProp = data[i].prop;
-        			this.versionSearchString = data[i].versionSearch || data[i].identity;
-        			if (dataString) {
-        				if (dataString.indexOf(data[i].subString) != -1)
-        					return data[i].identity;
-        			}
-        			else if (dataProp)
-        				return data[i].identity;
-        		}
-        	},
-        	searchVersion: function (dataString) {
-        		var index = dataString.indexOf(this.versionSearchString);
-        		if (index == -1) return;
-        		return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
-        	},
-        	dataBrowser: [
+            init: function () {
+                this.name = this.searchString(this.dataBrowser) || '';
+                this.version = this.searchVersion(navigator.userAgent)
+                    || this.searchVersion(navigator.appVersion)
+                    || '';
+            },
+            searchString: function (data) {
+                for (var i=0;i<data.length;i++)    {
+                    var dataString = data[i].string;
+                    var dataProp = data[i].prop;
+                    this.versionSearchString = data[i].versionSearch || data[i].identity;
+                    if (dataString) {
+                        if (dataString.indexOf(data[i].subString) != -1)
+                            return data[i].identity;
+                    }
+                    else if (dataProp)
+                        return data[i].identity;
+                }
+            },
+            searchVersion: function (dataString) {
+                var index = dataString.indexOf(this.versionSearchString);
+                if (index == -1) return;
+                return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+            },
+            dataBrowser: [
                 {
                     string: navigator.vendor,
-        			subString: "Apple",
-        			identity: "safari",
-        			versionSearch: "Version"
+                    subString: "Apple",
+                    identity: "safari",
+                    versionSearch: "Version"
                 },
-        		{
-        			string: navigator.userAgent,
-        			subString: 'MSIE',
-        			identity: 'explorer',
-        			versionSearch: 'MSIE'
-        		}
-        	]
+                {
+                    string: navigator.userAgent,
+                    subString: 'MSIE',
+                    identity: 'explorer',
+                    versionSearch: 'MSIE'
+                }
+            ]
         }
         browser.init();
 
