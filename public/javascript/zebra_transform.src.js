@@ -2,15 +2,16 @@
  *  Zebra_TransForm
  *
  *  A tiny (4KB minified) jQuery plugin for styling the appearance of checkboxes, radio buttons and select boxes without
- *  sacrificing functionality and accessibility: the elements preserve their <em>tabindex</em>, give visual feedback when
- *  having the focus, can be accessed by using the keyboard, and look and behave in the same way in all major browsers.
+ *  sacrificing functionality and accessibility: the elements preserve their event handlers, their <em>tabindex</em>,
+ *  give visual feedback when having the focus, can be accessed by using the keyboard, and look and behave in the same
+ *  way in all major browsers.
  *
  *  Visit {@link http://stefangabos.ro/jquery/zebra-transform/} for more information.
  *
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.3.3 (last revision: July 10, 2013)
+ *  @version    2.4.0 (last revision: July 24, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_TransForm
@@ -30,19 +31,19 @@
             plugin = this;
 
         // this will hold the merged default, and user-provided options
-        plugin.settings = {}
+        plugin.settings = {};
 
         // the "constructor" method that gets called when the object is created
         var init = function() {
 
             // don't do anything for IE6
-            if (browser.name == 'explorer' && browser.version == 6) return;
+            if (browser.name === 'explorer' && browser.version === 6) return;
 
             // the plugin's final properties are the merged default and user-provided options (if any)
             plugin.settings = $.extend({}, defaults, options);
 
             // if invalid collection of element to replace
-            if (undefined == elements || typeof elements.each != 'function')
+            if (undefined === elements || typeof elements.each !== 'function')
 
                 // replace all replaceable elements
                 elements = $('input[type="checkbox"], input[type="radio"], select');
@@ -56,19 +57,21 @@
                 // iterate over the replaced elements
                 elements.each(function() {
 
-                    var $element = $(this);
+                    var $element = $(this),
+                        wrapper = $element.data('Zebra_TransForm_' + type);
 
-                    // remove the wrapper from the original elements
-                    $element.parent('.Zebra_TransForm_Wrapper').replaceWith($element);
+                    // if element was replaced before, remove the replacement from
+                    // the DOM as we will be creating it again
+                    if (wrapper) wrapper.replaceWith($element);
 
                 });
 
                 // apply the replacements again
-                plugin.update(elements)
+                plugin.update(elements);
 
             });
 
-        }
+        };
 
         /**
          *  If you dynamically add or enable/disable controls, call this method to update the elements' style
@@ -85,13 +88,13 @@
 
                 var
 
-                    // reference to jQuery version of the element that needs to be replaced
+                    // reference to jQuery element that needs to be replaced
                     $element = $(this),
 
-                    // reference to the actual DOM element
+                    // reference to the DOM element
                     element = this,
 
-                    // get the type of the element
+                    // get type of element
                     type =  $element.is('input:checkbox') ? 'checkbox' :
                             ($element.is('input:radio') ? 'radio' :
                             ($element.is('select') ? 'select' :
@@ -103,86 +106,78 @@
                     // make the first letter capital
                     type = type.charAt(0).toUpperCase() + type.slice(1);
 
-                    var
-
-                        // reference to the replacement div
-                        replacement = $element.data('Zebra_TransForm_' + type),
-
-                        // get some of the element's attributes
-                        attributes = {
+                    // get some of the element's attributes
+                    var attributes = {
 
                             'checked':      $element.attr('checked'),
                             'disabled':     $element.attr('disabled'),
                             'multiple':     $element.attr('multiple'),
                             'size':         $element.attr('size')
 
-                        }
+                        };
 
                     // if element is not a list or a multi-select box
-                    if (!(type == 'Select' && (attributes.multiple || attributes.size))) {
+                    if (!(type === 'Select' && (attributes.multiple || attributes.size))) {
+
+                        // reference to the wrapper
+                        var wrapper = $element.data('Zebra_TransForm_' + type);
 
                         // if element was replaced before, remove the replacement from
                         // the DOM as we will be creating it again
-                        if (replacement) replacement.remove();
+                        if (wrapper) wrapper.replaceWith($element);
 
-                        var
+                        // we create a wrapper for the parent element so that we can later position the replacement div
+                        // also, make sure the wrapper inherits some important css properties of the parent element
+                        wrapper = $('<span>', {'class': 'Zebra_TransForm_Wrapper'}).css({
 
-                            // get some of the element's CSS properties
-                            styles = {
+                            'display':  $element.css('display'),
+                            'position': $element.css('position') === 'static' ? 'relative' : $element.css('position'),
+                            'float':    $element.css('float'),
+                            'top':      $element.css('top'),
+                            'right':    $element.css('right'),
+                            'bottom':   $element.css('bottom'),
+                            'left':     $element.css('left'),
+                            'width':    $element.css('width'),
+                            'margin':   $element.css('margin')
 
-                                'width':            $element.outerWidth(),
-                                'height':           $element.outerHeight(),
-                                'marginLeft':       parseInt($element.css('marginLeft'), 10) || 0,
-                                'marginTop':        parseInt($element.css('marginTop'), 10) || 0
+                        });
 
-                            },
-
-                            // we create a wrapper for the parent element so that we can later position the replacement div
-                            // also, make sure the wrapper inherits some important css properties of the parent element
-                            wrapper = jQuery('<span>', {'class': 'Zebra_TransForm_Wrapper'}).css({
-                                'display':  $element.css('display'),
-                                'position': $element.css('position') == 'static' ? 'relative' : $element.css('position'),
-                                'float':    $element.css('float'),
-                                'top':      $element.css('top'),
-                                'right':    $element.css('right'),
-                                'bottom':   $element.css('bottom'),
-                                'left':     $element.css('left'),
-                                'width':    $element.css('width')
-                            }),
-
-                            // create the replacement div
-                            replacement =
-
-                                jQuery('<div>', {'class': 'Zebra_TransForm_' + type}).
+                        // create the replacement element
+                        var replacement = $('<div>', {'class': 'Zebra_TransForm_' + type + (type === 'Radio' ? ' Zebra_TransForm_Radio_' + $element.attr('name') : '')}).
 
                                 // the replacement div will be invisible for now
                                 css('visibility', 'hidden');
 
                         // put the parent element inside the wrapper
-                        // also, make sure we set some important css properties for it
-                        $element = $element.replaceWith(wrapper).appendTo(wrapper).css({
+                        // also, reset some of its css properties
+                        $element.wrap(wrapper).css({
                             'position': 'relative',
                             'top':      'auto',
                             'right':    'auto',
                             'bottom':   'auto',
-                            'left':     'auto'
+                            'left':     'auto',
+                            'margin':   'auto',
+                            'zIndex':   10
                         });
 
+                        // get some of the element's CSS properties
+                        var styles = {
+
+                            'position': $element.position(),
+                            'width':    $element.outerWidth(),
+                            'height':   $element.outerHeight()
+
+                        };
+
                         // if element is a checkbox or radio button
-                        if (type != 'Select')
+                        if (type !== 'Select')
 
-                            // create the tick and add it to the replacement div
-                            replacement.append(jQuery('<div>', {
+                            // create the tick element
+                            replacement.append($('<div>', {
 
-                                'class':    (type == 'Checkbox' ? 'Zebra_TransForm_Checkbox_Tick' : 'Zebra_TransForm_Radio_Dot')
+                                'class':    (type === 'Checkbox' ? 'Zebra_TransForm_Checkbox_Tick' : 'Zebra_TransForm_Radio_Dot')
 
-                            // when the replacement is clicked
-                            })).bind('click', function() {
-
-                                // trigger the original element's "onChange" event
-                                $element.trigger('change');
-
-                            });
+                            }));
 
                         // if element is a select box
                         else {
@@ -191,17 +186,16 @@
 
                                 // create the arrow element
                                 // and add it to the replacement div
-                                arrow = jQuery('<div>', {'class': 'Zebra_TransForm_Arrow'}).appendTo(replacement),
+                                arrow = $('<div>', {'class': 'Zebra_TransForm_Arrow'}).appendTo(replacement),
 
                                 // create the element showing the currently selected value
                                 // and clone the original element's font related CSS properties
-                                text = jQuery('<div>', {'class': 'Zebra_TransForm_Text'}).css({
+                                text = $('<div>', {'class': 'Zebra_TransForm_Text'}).css({
 
                                     'fontFamily':   $element.css('fontFamily'),
                                     'fontSize':     $element.css('fontSize'),
                                     'fontStyle':    $element.css('fontStyle'),
-                                    'fontWeight':   $element.css('fontWeight'),
-                                    'width':        styles.width
+                                    'fontWeight':   $element.css('fontWeight')
 
                                 // add the text value of the currently selected option, and add everything to the replacement div
                                 }).text(element.options[element.selectedIndex].text).appendTo(replacement.css('background', $element.css('background')));
@@ -212,30 +206,14 @@
                         // we need to add it to the DOM now so that we can use width(), outerWidth(), etc functions later
                         replacement.insertAfter($element);
 
-                        // get the original element's events
-                        var events = $element.data('events');
-
-                        // if there are any events attached to the original element
-                        if (events)
-
-                            // iterate through the attached event types
-                            for (var event_type in events)
-
-                                // iterate through all the events of a specific type
-                                for (var idx in events[event_type])
-
-                                    // copy the event to the replacement element
-                                    // (make sure that the function context is the original element -> $.proxy)
-                                    replacement[event_type]($.proxy(events[event_type][idx].handler, $element.get(0)));
-
                         // if element is a checkbox or radio button
-                        if (type != 'Select')
+                        if (type !== 'Select')
 
                             // place the replacement div so that it's *exactly* above the original element
                             replacement.css({
 
-                                'left': ((styles.width - replacement.width()) / 2) + styles.marginLeft,
-                                'top':  ((styles.height - replacement.height()) / 2) + styles.marginTop
+                                'left': ((styles.width - replacement.width()) / 2) + styles.position.left,
+                                'top':  ((styles.height - replacement.height()) / 2) + styles.position.top
 
                             // style the element according to its state
                             }).addClass(
@@ -257,7 +235,7 @@
                             // if select box is disabled, style accordingly
                             if (attributes.disabled) replacement.addClass('Zebra_TransForm_Select_Disabled');
 
-                            // get some CSS properties
+                            // get some CSS properties of the original element
                             $.extend(styles, {
 
                                 'paddingTop':       parseInt($element.css('paddingTop'), 10) || 0,
@@ -267,17 +245,13 @@
 
                             });
 
-                            // the select box needs to be above the replacement div
-                            $element.css('z-index', 20);
-
                             // if browser is Internet Explorer 7
-                            if (browser.name == 'explorer' && browser.version == 7) {
+                            if (browser.name === 'explorer' && browser.version === 7) {
 
                                 // since IE7 doesn't support paddings on select boxes, we'll emulate that by
                                 // adding margins to the select box, while keeping the replacement div in the
                                 // select box's original position
 
-                                // emulate paddings by setting the margins
                                 $element.css({
                                     'marginTop':    styles.paddingTop,
                                     'marginBottom': styles.paddingBottom,
@@ -298,8 +272,8 @@
                                 // because the replacement div doesn't have its "width" and "height" set yet,
                                 // outerWidth and outerHeight will return the size of the borders for now
 
-                                'left':     styles.marginLeft,
-                                'top':      styles.marginTop,
+                                'left':     0,
+                                'top':      0,
                                 'width':    styles.width - replacement.outerWidth(),
                                 'height':   styles.height - replacement.outerHeight()
 
@@ -309,22 +283,24 @@
                             arrow.css({
 
                                 'top':      (replacement.innerHeight() - arrow.outerHeight()) / 2,
-                                'right':    browser.name == 'safari' ? 0 : styles.paddingRight
+                                'right':    browser.name === 'safari' ? 0 : styles.paddingRight
 
                             });
 
                             // position the text
                             text.css({
 
-                                'top':  (replacement.innerHeight() - text.outerHeight()) / 2,
-                                'left': styles.paddingLeft
+                                'top':      (replacement.innerHeight() - text.outerHeight()) / 2,
+                                'left':     styles.paddingLeft,
+                                'width':    styles.width - (styles.paddingRight * 3) - parseFloat(arrow.css('width'))
 
                             });
 
                         }
 
-                        // handle events on the original element
-                        $element.bind({
+                        // handle events of the original element
+                        // make sure these events are handled *before* any other events that may have been set by the user
+                        bindFirst($element, {
 
                             // when the element receives focus
                             'focus': function() {
@@ -349,44 +325,25 @@
                                 if (!$element.attr('disabled')) {
 
                                     // if we're doing checkboxes
-                                    if (type == 'Checkbox') {
+                                    if (type === 'Checkbox')
 
                                         // toggle a class on the replacement div
                                         replacement.toggleClass('Zebra_TransForm_Checkbox_Checked');
 
-                                        // set the "checked" attribute accordingly
-                                        if (replacement.hasClass('Zebra_TransForm_Checkbox_Checked'))
-
-                                            $element.attr('checked', 'checked');
-
-                                        else
-
-                                            $element.removeAttr('checked', 'checked');
-
                                     // if we're doing radio buttons
-                                    } else if (type == 'Radio') {
+                                    else if (type === 'Radio') {
 
-                                        // find all radio buttons sharing the name of the currently clicked
-                                        // and iterate through the found elements
-                                        $('input:radio[name=' + $element.attr('name') + ']').each(function() {
+                                        // iterate through all the replacements for radio buttons sharing the name of the
+                                        // currently clicked one
+                                        $('.Zebra_TransForm_Radio_' + $(this).attr('name')).each(function() {
 
-                                            // reference to the jQuery version of the element
-                                            var $control = $(this);
-
-                                            // remove the "checked" attribute
-                                            $control.removeAttr('checked');
-
-                                            // remove a class from the replacement div
-                                            $control.data('Zebra_TransForm_Radio').removeClass('Zebra_TransForm_Radio_Checked');
+                                            // remove a class from the replacement element
+                                            $(this).removeClass('Zebra_TransForm_Radio_Checked');
 
                                         });
 
-                                        // add class to replacement div of the currently clicked element
+                                        // add class to replacement of the currently clicked element
                                         replacement.addClass('Zebra_TransForm_Radio_Checked');
-
-                                        // set the "checked" attribute of the currently clicked element
-                                        // remember, we remove these in the lines above
-                                        $element.attr('checked', 'checked');
 
                                     // if select boxes
                                     } else
@@ -398,10 +355,10 @@
 
                             },
 
-                            'keyup': function(e) {
+                            'keyup': function() {
 
                                 // if element is a select box 
-                                if (type == 'Select')
+                                if (type === 'Select')
 
                                     // put the text value in the replacement div
                                     text.text(element.options[element.selectedIndex].text);
@@ -410,14 +367,30 @@
 
                         // make the original element *almost* invisible
                         // (if the element is visible it will be part of the tab-order and accessible by keyboard!)
-                        // and save a reference to the replacement div
-                        }).css('opacity', '0.0001').data('Zebra_TransForm_' + type, replacement);
+                        // and save a reference to the wrapper div
+                        }).css('opacity', '0.0001').data('Zebra_TransForm_' + type, wrapper);
+
+                        // get the original element's events
+                        var events = $._data(element, 'events');
+
+                        // if there are any events attached to the original element
+                        if (events)
+
+                            // iterate through the attached event types
+                            for (var event_type in events)
+
+                                // iterate through all the events of a specific type
+                                for (var idx in events[event_type])
+
+                                    // copy the event to the replacement element
+                                    // (make sure that the function context is the original element -> $.proxy)
+                                    replacement.bind((type !== 'Select' && event_type === 'change' ? 'click' : event_type), $.proxy(events[event_type][idx].handler, element));
 
                         // make the replacement div visible
                         replacement.css('visibility', 'visible');
 
                     // if a multi-select box or a list
-                    } else if (type == 'Select' && (attributes.multiple || attributes.size))
+                    } else 
 
                         // style the element according to its current state
                         $element.addClass(
@@ -433,7 +406,7 @@
                     // if an attached label exists
                     if (label)
 
-                        //  style the label according to its current state
+                        //  style the label according to the element's current state
                         label.addClass(
 
                             // if element is disabled and labels attached to disabled controls are to be "disabled"
@@ -445,16 +418,53 @@
 
             });
 
-        }
+        };
+
+        // a method for binding event handlers so that they are triggered first
+        // based on the code found here: http://stackoverflow.com/questions/4742610/attaching-jquery-event-handlers-so-that-they-are-triggered-first/4742655#4742655
+        var bindFirst = function(el, binds) {
+
+            // iterate through the {event-type: function} object
+            for (var type in binds) {
+
+                // if the same handler is attached to multiple events, split events by white space
+                type = type.split(/\s+/);
+
+                // the number of events
+                var len = type.length;
+
+                // for each event
+                while(len--)
+
+                    // iterate through the elements given as argument
+                    el.each(function() {
+
+                        var $element = $(this), evt;
+
+                        // append our handler to the list
+                        $element.bind(type[len], binds[type]);
+
+                        // get the list of handlers attached for the current event
+                        evt = $._data($element[0], 'events')[type[len]];
+
+                        // make the last handler be executed first
+                        evt.splice(0, 0, evt.pop());
+
+                    });
+
+            }
+
+            // return the element so we can chain
+            return el;
+
+        };
 
         // since with jQuery 1.9.0 the $.browser object was removed, we rely on this piece of code from
         // http://www.quirksmode.org/js/detect.html to detect the browser
         var browser = {
             init: function () {
                 this.name = this.searchString(this.dataBrowser) || '';
-                this.version = this.searchVersion(navigator.userAgent)
-                    || this.searchVersion(navigator.appVersion)
-                    || '';
+                this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || '';
             },
             searchString: function (data) {
                 for (var i=0;i<data.length;i++)    {
@@ -462,7 +472,7 @@
                     var dataProp = data[i].prop;
                     this.versionSearchString = data[i].versionSearch || data[i].identity;
                     if (dataString) {
-                        if (dataString.indexOf(data[i].subString) != -1)
+                        if (dataString.indexOf(data[i].subString) !== -1)
                             return data[i].identity;
                     }
                     else if (dataProp)
@@ -471,7 +481,7 @@
             },
             searchVersion: function (dataString) {
                 var index = dataString.indexOf(this.versionSearchString);
-                if (index == -1) return;
+                if (index === -1) return;
                 return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
             },
             dataBrowser: [
@@ -488,12 +498,13 @@
                     versionSearch: 'MSIE'
                 }
             ]
-        }
+        };
+
         browser.init();
 
         // call the "constructor" method
         init();
 
-    }
+    };
 
 })(jQuery);
