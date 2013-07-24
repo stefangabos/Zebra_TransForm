@@ -4,11 +4,11 @@
 
 Attempting to use CSS only to style check boxes, select boxes and radio buttons in order to achieve the same look and feel across browsers and operating systems it’s a lost cause: it simply cannot be done. In order to consistently style these form controls cross browser, we will use a combination of CSS and jQuery.
 
-**Zebra_TransForm** is a tiny (around 4KB minified) plugin for jQuery for styling the appearance of check boxes, radio buttons and select boxes without sacrificing functionality and accessibility. This jQuery plugin works by overlaying stylable elements over the native controls. It works in sync with the form’s original elements copying the events attached to these, preserving the tabindex, giving visual feedback when focused, being accessible via keyboard, and looking and behaving in the same way in all major browsers – Firefox, Chrome, Safari, Opera and Internet Explorer 7+ (in IE6 it will not replace original elements)
+**Zebra_TransForm** is a tiny (around 4KB minified) plugin for jQuery for styling the appearance of check boxes, radio buttons and select boxes without sacrificing functionality and accessibility. This jQuery plugin works by overlaying stylable elements over the native controls. It works in sync with the form’s original elements copying the attached event handlers, preserving the tabindex, giving visual feedback when focused, being accessible via keyboard, and looking and behaving in the same way in all major browsers – Firefox, Chrome, Safari, Opera and Internet Explorer 7+ (in IE6 it will not replace original elements)
 
 ##Requirements
 
-Zebra_TransForm has no dependencies other than jQuery 1.5.2+
+Zebra_TransForm has no dependencies other than jQuery 1.7.1+
 ##How to use
 
 First, load the latest version of jQuery from a CDN and provide a fallback to a local source, like:
