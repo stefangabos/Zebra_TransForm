@@ -146,4 +146,13 @@
     border: 1px solid #DEDEDE;
 }
 
-select { font-family: inherit }
+.Zebra_TransForm_Wrapper .Zebra_TransForm_Replaced {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    margin: auto !important;
+    z-index: 10 !important;
+    font-family: inherit;
+}
