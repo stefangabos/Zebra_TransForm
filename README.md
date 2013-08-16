@@ -63,7 +63,7 @@ $(document).ready(function() {
     // and assign it to a variable
     var zt = new $.Zebra_TransForm();
 
-    // call the plugin's "update" method
+    // revert elements to their original state
     zt.remove();
 
 });
