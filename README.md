@@ -58,6 +58,14 @@ $(document).ready(function() {
     // style only a specific element
     $.Zebra_TransForm($('#element'));
 
+    // if you plan on reverting elements to their original state
+    // you must instantiate the plugin with the "new" keyword
+    // and assign it to a variable
+    var zt = new $.Zebra_TransForm();
+
+    // call the plugin's "update" method
+    zt.remove();
+
 });
 ```
 
