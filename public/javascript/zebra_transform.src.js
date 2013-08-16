@@ -11,7 +11,7 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.4.0 (last revision: August 12, 2013)
+ *  @version    2.4.1 (last revision: August 16, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_TransForm
@@ -198,7 +198,7 @@
                         $element.wrap(wrapper).addClass('Zebra_TransForm_Replaced');
 
                         // since wrap() uses a copy of the given HTML structure
-                        // we need to use that particula copy from now on
+                        // we need to use that particular copy from now on
                         wrapper = $element.parent('.Zebra_TransForm_Wrapper');
 
                         // get some of the element's CSS properties
