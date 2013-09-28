@@ -32,6 +32,6 @@
     "docs": "http://stefangabos.ro/jquery/zebra-transform/#how-to-use",
     "download": "http://stefangabos.ro/jquery/zebra-transform/#download",
     "dependencies": {
-        "jquery": ">=1.5.2"
+        "jquery": ">=1.7.1"
     }
 }
