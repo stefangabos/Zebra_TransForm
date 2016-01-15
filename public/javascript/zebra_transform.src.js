@@ -1,7 +1,7 @@
 /**
  *  Zebra_TransForm
  *
- *  A tiny (4KB minified) jQuery plugin for styling the appearance of checkboxes, radio buttons and select boxes without
+ *  A tiny (5KB minified) jQuery plugin for styling the appearance of checkboxes, radio buttons and select boxes without
  *  sacrificing functionality and accessibility: the elements preserve their event handlers, their <em>tabindex</em>,
  *  give visual feedback when having the focus, can be accessed by using the keyboard, and look and behave in the same
  *  way in all major browsers.
@@ -11,8 +11,8 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.4.1 (last revision: September 28, 2013)
- *  @copyright  (c) 2011 - 2013 Stefan Gabos
+ *  @version    2.4.2 (last revision: January 16, 2016)
+ *  @copyright  (c) 2011 - 2016 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_TransForm
  */
@@ -64,6 +64,7 @@
                 timeout = setTimeout(function() {
 
                     // update replacements
+                    update(true);
                     update();
 
                 }, 100);
@@ -113,7 +114,7 @@
                     // get some of the element's attributes
                     attributes = {
 
-                        'checked':      $element.attr('checked'),
+                        'checked':      $element.prop('checked'),
                         'disabled':     $element.attr('disabled'),
                         'multiple':     $element.attr('multiple'),
                         'size':         $element.attr('size')
@@ -141,10 +142,13 @@
                         if (remove) {
 
                             // remove the reference to the wrapper
-                            $element.removeData('Zebra_TransForm_Wrapper').
+                            $element.removeData('Zebra_TransForm_Wrapper')
 
                                 // if element is a multi-select or a list, also remove this class
-                                removeClass('Zebra_TransForm_List');
+                                .removeClass('Zebra_TransForm_List')
+
+                                // remove this generic class, too
+                                .removeClass('Zebra_TransForm');
 
                             // if element is disabled and disabled labels need to be styled
                             if (attributes.disabled && plugin.settings.style_disabled_labels) {
