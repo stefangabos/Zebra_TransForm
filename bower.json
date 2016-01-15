@@ -1,0 +1,24 @@
+{
+  "name": "zebra_transform",
+  "description": "A tiny jQuery plugin for replacing checkboxes, radio buttons and select boxes",
+  "version": "2.4.1",
+  "license": "LGPL",
+  "main": "public/javascript/zebra_transform.js",
+  "ignore": [
+    ".gitignore",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json",
+    "*.md"
+  ],
+  "keywords": [
+    "checkbox",
+    "radio",
+    "select",
+    "transform",
+    "jquery"
+  ]
+  "dependencies": {
+    "jquery": ">= 1.7.1"
+  }
+}
