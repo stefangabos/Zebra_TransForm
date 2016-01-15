@@ -113,12 +113,12 @@
                     // get some of the element's attributes
                     attributes = {
 
-                            'checked':      $element.attr('checked'),
-                            'disabled':     $element.attr('disabled'),
-                            'multiple':     $element.attr('multiple'),
-                            'size':         $element.attr('size')
+                        'checked':      $element.attr('checked'),
+                        'disabled':     $element.attr('disabled'),
+                        'multiple':     $element.attr('multiple'),
+                        'size':         $element.attr('size')
 
-                        };
+                    };
 
                     // if element is not a list or a multi-select box
                     if (!(type === 'Select' && (attributes.multiple || attributes.size))) {
@@ -161,7 +161,7 @@
                             }
 
                             // unbind events set by the plugin
-                            $element.unbind('.Zebra_TransForm');
+                            $element.off('.Zebra_TransForm');
 
                             // set the original element's opacity back
                             $element.css('opacity', 1);
@@ -188,10 +188,10 @@
                         });
 
                         // create the replacement element
-                        replacement = $('<div>', {'class': 'Zebra_TransForm_' + type + (type === 'Radio' ? ' Zebra_TransForm_Radio_' + $element.attr('name') : '')}).
+                        replacement = $('<div>', {'class': 'Zebra_TransForm_' + type + (type === 'Radio' ? ' Zebra_TransForm_Radio_' + $element.attr('name') : '')})
 
-                                // the replacement div will be invisible for now
-                                css('visibility', 'hidden');
+                            // the replacement div will be invisible for now
+                            .css('visibility', 'hidden');
 
                         // put the parent element inside the wrapper
                         // also, add a class that will reset some of its css properties
@@ -342,7 +342,7 @@
 
                             // handle events of the original element
                             // these handlers will be executed *before* any other similar event attached to the element
-                            _bind($element, {
+                            _on($element, {
 
                                 // when the element receives focus
                                 'focus.Zebra_TransForm': function() {
@@ -424,7 +424,7 @@
 
                                         // copy the event to the replacement element
                                         // (make sure that the function context is the original element -> $.proxy)
-                                        replacement.bind((type !== 'Select' && event_type === 'change' ? 'click' : event_type), $.proxy(events[event_type][idx].handler, element));
+                                        replacement.on((type !== 'Select' && event_type === 'change' ? 'click' : event_type), $.proxy(events[event_type][idx].handler, element));
 
                         }
 
@@ -475,7 +475,7 @@
         plugin.remove = function() {
 
             // unbind handler from the window's resize event
-            $(window).unbind('.Zebra_TransForm');
+            $(window).off('.Zebra_TransForm');
 
             // remove replacements
             update(true);
@@ -493,7 +493,7 @@
          *
          *  @access private
          */
-        var _bind = function(el, binds) {
+        var _on = function(el, binds) {
 
             // iterate through the {event-type: function} object
             for (var type in binds) {
