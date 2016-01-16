@@ -52,25 +52,6 @@
                 // replace all replaceable elements
                 elements = $('input[type="checkbox"], input[type="radio"], select');
 
-            // handle window resize
-            $(window).on('resize.Zebra_TransForm', function() {
-
-                // we use timeouts so that we do not call the "update" method on *every* step of the resize event
-
-                // clear a previously set timeout upon subsequent requests
-                clearTimeout(timeout);
-
-                // set timeout again
-                timeout = setTimeout(function() {
-
-                    // update replacements
-                    update(true);
-                    update();
-
-                }, 100);
-
-            });
-
             // update replacements
             update();
 
@@ -469,6 +450,57 @@
 
             });
 
+            // if replacements need to be removed
+            if (remove) {
+
+                // unbind handler from the window's resize event
+                $(window).off('.Zebra_TransForm');
+
+                // unbind handler from forms
+                $('form').off('.Zebra_TransForm');
+
+            // otherwise
+            } else {
+
+                // handle window resize
+                $(window).on('resize.Zebra_TransForm', function() {
+
+                    // we use timeouts so that we do not call the "update" method on *every* step of the resize event
+
+                    // clear a previously set timeout upon subsequent requests
+                    clearTimeout(timeout);
+
+                    // set timeout again
+                    timeout = setTimeout(function() {
+
+                        // remove replacements
+                        update(true);
+
+                        // add updated replacements
+                        update();
+
+                    }, 100);
+
+                });
+
+                // handle "reset" events on forms
+                $('form').on('reset.Zebra_TransForm', function() {
+
+                    // we have to wait a bit to make sure everything works as expected
+                    setTimeout(function() {
+
+                        // remove replacements
+                        update(true);
+
+                        // add updated replacements
+                        update();
+
+                    }, 100);
+
+                });
+
+            }
+
         };
 
         /**
@@ -477,9 +509,6 @@
          *  @return void
          */
         plugin.remove = function() {
-
-            // unbind handler from the window's resize event
-            $(window).off('.Zebra_TransForm');
 
             // remove replacements
             update(true);
