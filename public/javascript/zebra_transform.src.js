@@ -18,6 +18,8 @@
  */
 ;(function($) {
 
+    'use strict';
+
     $.Zebra_TransForm = function(elements, options) {
 
         // plugin's default options
@@ -210,7 +212,7 @@
 
                             // create the arrow element
                             // and add it to the replacement div
-                            arrow = $('<div>', {'class': 'Zebra_TransForm_Arrow'}).appendTo(replacement),
+                            arrow = $('<div>', {'class': 'Zebra_TransForm_Arrow'}).appendTo(replacement);
 
                             // create the element showing the currently selected value
                             // and clone the original element's font related CSS properties
@@ -598,9 +600,9 @@
             dataBrowser: [
                 {
                     string: navigator.vendor,
-                    subString: "Apple",
-                    identity: "safari",
-                    versionSearch: "Version"
+                    subString: 'Apple',
+                    identity: 'safari',
+                    versionSearch: 'Version'
                 },
                 {
                     string: navigator.userAgent,
