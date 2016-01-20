@@ -1,6 +1,6 @@
 {
   "name": "zebra_transform",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "main": "public/javascript/zebra_transform.js",
   "homepage": "https://github.com/stefangabos/Zebra_Transform",
   "authors": [
