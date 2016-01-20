@@ -11,11 +11,16 @@ Attempting to use CSS only to style check boxes, select boxes and radio buttons 
 Zebra_TransForm has no dependencies other than jQuery 1.7.1+
 ##How to use
 
-First, load the latest version of jQuery from a CDN and provide a fallback to a local source, like:
+Zebra_TransForm is also available as a [Bower](http://bower.io/) package. To install it use:
+```
+bower install zebra_transform
+```
+
+Load the latest version of jQuery from a CDN and provide a fallback to a local source, like:
 
 ```html
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="public/javascript/jquery-1.9.1.js"><\/script>')</script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="path/to/jquery-1.12.0.js"><\/script>')</script>
 ```
 
 Load the Zebra_TransForm plugin
