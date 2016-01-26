@@ -1,34 +1,36 @@
 {
   "name": "zebra_transform",
-  "description": "A tiny jQuery plugin for replacing checkboxes, radio buttons and select boxes",
+  "version": "2.4.5",
+  "main": "public/javascript/zebra_transform.js",
+  "homepage": "https://github.com/stefangabos/Zebra_TransForm",
   "author": {
     "name": "Stefan Gabos",
     "email": "contact@stefangabos.ro"
   },
-  "homepage": "http://www.stefangabos.ro/jquery/zebra-transform/",
-  "main": "public/javascript/zebra_transform.js",
+  "description": "A tiny jQuery plugin for replacing checkboxes, radio buttons and select boxes",
   "repository": {
     "type": "git",
     "url": "https://github.com/stefangabos/Zebra_Transform.git"
   },
-  "licenses": [
-    {
-      "type": "LGPL",
-      "url": "https://www.gnu.org/licenses/lgpl-3.0.txt"
-    }
-  ],
-  "version": "2.4.4",
+  "bugs": {
+    "url": "http://github.com/stefangabos/Zebra_Transform/issues",
+    "email": "contact@stefangabos.ro"
+  },
   "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery",
     "checkbox",
     "radio",
     "select",
     "transform",
     "jquery"
   ],
-  "bugs": {
-    "url": "http://github.com/stefangabos/Zebra_Transform/issues",
-    "email": "contact@stefangabos.ro"
-  },
+  "licenses": [
+    {
+      "type": "LGPL",
+      "url": "https://www.gnu.org/licenses/lgpl-3.0.txt"
+    }
+  ],
   "devDependencies": {
     "grunt": "*",
     "grunt-cli": "*",
