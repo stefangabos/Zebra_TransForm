@@ -9,9 +9,17 @@ Attempting to use CSS only to style check boxes, select boxes and radio buttons 
 ##Requirements
 
 Zebra_TransForm has no dependencies other than jQuery 1.7.1+
+
 ##How to use
 
-Zebra_TransForm is also available as a [Bower](http://bower.io/) package. To install it use:
+Zebra_TransForm is available as an [npm package](https://www.npmjs.com/package/zebra_transform). To install it use:
+
+```
+npm install zebra_transform
+```
+
+Zebra_TransForm is also available as a [Bower package](http://bower.io/). To install it use:
+
 ```
 bower install zebra_transform
 ```
