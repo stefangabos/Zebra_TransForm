@@ -11,7 +11,7 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.4.4 (last revision: January 20, 2016)
+ *  @version    2.4.5 (last revision: January 26, 2016)
  *  @copyright  (c) 2011 - 2016 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_TransForm
