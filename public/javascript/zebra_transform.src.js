@@ -286,7 +286,7 @@
                                 });
 
                                 // the width and height of the replacement div need to be increased
-                                // to accomodate padding
+                                // to accommodate padding
                                 styles.height += (styles.paddingTop + styles.paddingBottom);
                                 styles.width += (styles.paddingLeft + styles.paddingRight);
 
