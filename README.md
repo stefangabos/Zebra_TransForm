@@ -1,4 +1,4 @@
-## Zebra_TransForm
+# Zebra_TransForm
 
 #### A tiny jQuery plugin for replacing checkboxes, radio buttons and select boxes
 
