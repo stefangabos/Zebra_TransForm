@@ -1,30 +1,30 @@
 {
   "name": "zebra_transform",
-  "version": "2.4.5",
-  "main": "public/javascript/zebra_transform.js",
+  "main": "dist/zebra_transform.js",
   "homepage": "https://github.com/stefangabos/Zebra_Transform",
   "authors": [
     "Stefan Gabos <contact@stefangabos.ro>"
   ],
-  "description": "A tiny jQuery plugin for replacing checkboxes, radio buttons and select boxes",
+  "description": "A tiny jQuery plugin for replacing and beautifying checkboxes, radio buttons, and select boxes",
   "keywords": [
     "checkbox",
-    "radio",
+    "radio-buttons",
     "select",
-    "transform",
-    "jquery"
+    "transform"
   ],
   "dependencies": {
-    "jquery": ">=1.7.1 <2.x"
+    "jquery": ">=1.7.1"
   },
   "license": "LGPL",
   "ignore": [
+    "src/*",
     ".gitattributes",
     ".gitignore",
     ".npmignore",
+    "bower.json",
+    "eslint.json",
     "Gruntfile.js",
     "package.json",
-    "README.md",
-    "bower.json"
+    "package-lock.json"
   ]
 }
