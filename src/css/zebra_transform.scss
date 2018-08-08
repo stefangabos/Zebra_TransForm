@@ -36,7 +36,7 @@
     width: 11px;
     height: 11px;
     margin: 4px 0 0 4px !important;
-    background-position: -57px -76px; /* outside the boundries as we don't want to show anything */
+    background-position: -57px -76px; /* outside the boundaries as we don't want to show anything */
 }
 
 .Zebra_TransForm_Checkbox_Checked .Zebra_TransForm_Checkbox_Tick {
@@ -63,7 +63,7 @@
     width: 7px;
     height: 7px;
     margin: 6px 0 0 6px !important;
-    background-position: -57px -76px; /* outside the boundries as we don't want to show anything */
+    background-position: -57px -76px; /* outside the boundaries as we don't want to show anything */
 }
 
 .Zebra_TransForm_Radio_Checked .Zebra_TransForm_Radio_Dot {
@@ -91,6 +91,26 @@
     border-radius: 4px;
     z-index: 9;
     overflow: hidden;
+
+    .Zebra_TransForm_Text {
+        position: absolute;
+        color: #222;
+        cursor: default;
+        z-index: 8;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .Zebra_TransForm_Arrow {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 17px;
+        height: 18px;
+        background-color: #FFF;
+        background-position: -58px top;
+        z-index: 9;
+    }
 }
 
 .Zebra_TransForm_Select_Focus {
@@ -99,39 +119,18 @@
     -webkit-box-shadow: 0 0 3px #CCC;
     box-shadow: 0 0 3px #CCC;
 
+    .Zebra_TransForm_Arrow {
+        background-color: #EEE;
+        background-position: -58px -19px;
+    }
 }
 
 .Zebra_TransForm_Select_Disabled {
     border: 1px solid #DEDEDE;
-}
 
-.Zebra_TransForm_Select .Zebra_TransForm_Arrow {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 17px;
-    height: 18px;
-    background-color: #FFF;
-    background-position: -58px top;
-    z-index: 9;
-}
-
-.Zebra_TransForm_Select_Focus .Zebra_TransForm_Arrow {
-    background-color: #EEE;
-    background-position: -58px -19px;
-}
-
-.Zebra_TransForm_Select_Disabled .Zebra_TransForm_Arrow {
-    background-position: -58px -38px;
-}
-
-.Zebra_TransForm_Select .Zebra_TransForm_Text {
-    position: absolute;
-    color: #222;
-    cursor: default;
-    z-index: 8;
-    white-space: nowrap;
-    overflow: hidden;
+    .Zebra_TransForm_Arrow {
+        background-position: -58px -38px;
+    }
 }
 
 /* LABELS FOR DISABLED CONTROLS */
