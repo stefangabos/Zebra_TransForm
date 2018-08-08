@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>Zebra_TransForm</title>
+
+        <link rel="stylesheet" href="reset.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="../dist/css/zebra_transform.min.css" type="text/css">
+
+    </head>
+
+    <body>
+
+        <div class="main-wrapper">
+
+            <h2>Checkboxes<span>First item is both disabled and checked</span></h2>
+
+            <input type="checkbox" name="checkbox[]" value="1" id="checkbox_1" checked="checked" disabled="disabled">
+            <label for="checkbox_1">Checkbox 1</label>
+
+            <br>
+
+            <input type="checkbox" name="checkbox[]" value="2" id="checkbox_2">
+            <label for="checkbox_2">Checkbox 2</label>
+
+            <br>
+
+            <input type="checkbox" name="checkbox[]" value="3" id="checkbox_3">
+            <label for="checkbox_3">Checkbox 3</label>
+
+            <h2>Radio buttons<span>First item is disabled</span></h2>
+
+            <input type="radio" name="radio" value="1" id="radio_1" disabled="disabled" checked="checked">
+            <label for="radio_1">Radio button 1</label>
+
+            <br>
+
+            <input type="radio" name="radio" value="2" id="radio_2">
+            <label for="radio_2">Radio button 2</label>
+
+            <br>
+
+            <input type="radio" name="radio" value="3" id="radio_3">
+            <label for="radio_3">Radio button 3</label>
+
+            <h2>Select box<span>Padding works in IE7!</span></h2>
+
+            <select style="padding: 8px">
+                <option value="">- Select -</option>
+                <option value="1">Select option 1</option>
+                <option value="2">Select option 2</option>
+                <option value="3">Select option 3</option>
+            </select>
+
+            <p><br></p>
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="../dist/zebra_transform.min.js"></script>
+        <script src="examples.js"></script>
+
+    </body>
+
+</html>
