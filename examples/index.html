@@ -5,63 +5,264 @@
     <head>
 
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="A tiny jQuery plugin for styling the appearance of check boxes, radio buttons and select boxes without sacrificing functionality and accessibility.">
+        <link rel="shortcut icon" href="favicon.ico">
+        <title>Zebra TransForm - a tiny jQuery plugin for replacing and beautifying checkboxes, radio buttons, and select boxes in IE7+</title>
 
-        <title>Zebra_TransForm</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCoreDefault.css" />
 
-        <link rel="stylesheet" href="reset.css" type="text/css">
-        <link rel="stylesheet" href="style.css" type="text/css">
         <link rel="stylesheet" href="../dist/css/zebra_transform.min.css" type="text/css">
+        <link rel="stylesheet" href="examples.css" type="text/css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushCss.min.js"></script>
+
+        <script>
+            SyntaxHighlighter.defaults['toolbar'] = false;
+            SyntaxHighlighter.all();
+        </script>
 
     </head>
 
     <body>
 
-        <div class="main-wrapper">
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Zebra TransForm</h1>
+                <p>a tiny jQuery plugin for styling the appearance of check boxes, radio buttons and select boxes without sacrificing functionality and accessibility.</p>
+                <hr>
+                <p>
+                    <a href="https://github.com/stefangabos/Zebra_TransForm/archive/master.zip" class="btn btn-primary btn-lg" role="button" style="text-decoration: none">Download</a>
+                    <a href="https://github.com/stefangabos/Zebra_TransForm" class="btn btn-primary btn-lg" role="button" style="text-decoration: none">View on GitHub</a>
+                </p>
+            </div>
+        </div>
 
-            <h2>Checkboxes<span>First item is both disabled and checked</span></h2>
+        <div class="container">
 
-            <input type="checkbox" name="checkbox[]" value="1" id="checkbox_1" checked="checked" disabled="disabled">
-            <label for="checkbox_1">Checkbox 1</label>
+            <div class="row">
 
-            <br>
+                <div class="col-xs-12">
 
-            <input type="checkbox" name="checkbox[]" value="2" id="checkbox_2">
-            <label for="checkbox_2">Checkbox 2</label>
+                    <blockquote class="bg-warning"><small class="text-warning">
+                        This plugin is mainly intended to be used for styling checkboxes, radio buttons and select boxes
+                        in older versions of Internet Explorer, like IE7 and IE8, but it can also be used in other browser
+                        if you want to consistently style these form controls cross browser.
+                    </small></blockquote>
 
-            <br>
+                    <p>
+                        Zebra TransForm is a tiny (~5KB minified) jQuery plugin for styling the appearance of check boxes,
+                        radio buttons and select boxes without sacrificing functionality and accessibility. This jQuery
+                        plugin works by overlaying stylable elements over the native controls. It works in sync with the
+                        form's original elements copying the attached event handlers, preserving the tabindex, giving visual
+                        feedback when focused, being accessible via keyboard, and looking and behaving in the same way in
+                        pretty much any browser – Chrome, Firefox, Safari, Edge, Opera and Internet Explorer 7+ (in IE6
+                        it will not replace original elements).
+                    </p>
 
-            <input type="checkbox" name="checkbox[]" value="3" id="checkbox_3">
-            <label for="checkbox_3">Checkbox 3</label>
+                    <hr><br>
 
-            <h2>Radio buttons<span>First item is disabled</span></h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            1. <a href="#checkboxes">Checkboxes</a><br>
+                            2. <a href="#radio-buttons">Radio buttons</a><br>
+                            3. <a href="#select-boxes">Select boxes</a><br>
+                        </div>
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
 
-            <input type="radio" name="radio" value="1" id="radio_1" disabled="disabled" checked="checked">
-            <label for="radio_1">Radio button 1</label>
+                    <!-- =========================================================================================== -->
 
-            <br>
+                    <br><h3><a name="checkboxes"></a>Checkboxes</h3>
 
-            <input type="radio" name="radio" value="2" id="radio_2">
-            <label for="radio_2">Radio button 2</label>
+                    <p>Notice how the first item is both disabled and checked</p>
 
-            <br>
+                    <p>HTML</p>
 
-            <input type="radio" name="radio" value="3" id="radio_3">
-            <label for="radio_3">Radio button 3</label>
+                    <pre class="brush:html">
+                        &lt;div id="checkboxes"&gt;
+                            <div class="form-group">
+                                <input type="checkbox" name="checkbox[]" value="1" id="checkbox_1" checked="checked" disabled="disabled">
+                                <label for="checkbox_1">Checkbox 1</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="checkbox[]" value="2" id="checkbox_2">
+                                <label for="checkbox_2">Checkbox 2</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="checkbox[]" value="3" id="checkbox_3">
+                                <label for="checkbox_3">Checkbox 3</label>
+                            </div>
+                        &lt;/div&gt;
+                    </pre>
 
-            <h2>Select box<span>Padding works in IE7!</span></h2>
+                    <p>JavaScript</p>
 
-            <select style="padding: 8px">
-                <option value="">- Select -</option>
-                <option value="1">Select option 1</option>
-                <option value="2">Select option 2</option>
-                <option value="3">Select option 3</option>
-            </select>
+                    <pre class="brush:javascript">
+                        new $.Zebra_TransForm($('#checkboxes input'));
 
-            <p><br></p>
+                        // to style *all* stylable elements pass no arguments to the constructor, like:
+                        //new $.Zebra_TransForm();
+                    </pre>
+
+                    <p>Result</p>
+
+                    <p>
+                        Notice that pressing <code>tab</code> or <code>shift-tab</code> works as expected, as well as
+                        checking/unchecking using the <code>space</code> key
+                    </p>
+
+                    <br><div id="checkboxes">
+                        <div class="form-group">
+                            <input type="checkbox" name="checkbox[]" value="1" id="checkbox_1" checked="checked" disabled="disabled">
+                            <label for="checkbox_1">Checkbox 1</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="checkbox[]" value="2" id="checkbox_2">
+                            <label for="checkbox_2">Checkbox 2</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="checkbox[]" value="3" id="checkbox_3">
+                            <label for="checkbox_3">Checkbox 3</label>
+                        </div>
+                    </div>
+
+                    <div class="top">
+                        <a href="#top" class="small">⯅ To the top</a>
+                    </div>
+
+                    <!-- =========================================================================================== -->
+
+                    <h3><a name="radio-buttons"></a>Radio buttons</h3>
+
+                    <p>First item is disabled</p>
+
+                    <p>HTML</p>
+
+                    <pre class="brush:html">
+                        &lt;div id="radio-buttons"&gt;
+                            <div class="form-group">
+                                <input type="radio" name="radio" value="1" id="radio_1" disabled="disabled" checked="checked">
+                                <label for="radio_1">Radio button 1</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="radio" value="2" id="radio_2">
+                                <label for="radio_2">Radio button 2</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="radio" value="3" id="radio_3">
+                                <label for="radio_3">Radio button 3</label>
+                            </div>
+                        &lt;/div&gt;
+                    </pre>
+
+                    <p>JavaScript</p>
+
+                    <pre class="brush:javascript">
+                        new $.Zebra_TransForm($('#radio-buttons input'));
+
+                        // to style *all* stylable elements pass no arguments to the constructor, like:
+                        //new $.Zebra_TransForm();
+                    </pre>
+
+                    <p>Result</p>
+
+                    <p>
+                        Notice that pressing <code>up</code> or <code>down</code> works as expected, as well as
+                        checking/unchecking using the <code>space</code> key
+                    </p>
+
+                    <br><div id="radio-buttons">
+                        <div class="form-group">
+                            <input type="radio" name="radio" value="1" id="radio_1" disabled="disabled" checked="checked">
+                            <label for="radio_1">Radio button 1</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" name="radio" value="2" id="radio_2">
+                            <label for="radio_2">Radio button 2</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" name="radio" value="3" id="radio_3">
+                            <label for="radio_3">Radio button 3</label>
+                        </div>
+                    </div>
+
+                    <div class="top">
+                        <a href="#top" class="small">⯅ To the top</a>
+                    </div>
+
+                    <!-- =========================================================================================== -->
+
+                    <h3><a name="select-boxes"></a>Select boxes</h3>
+
+                    <p>Padding works in IE7!</p>
+
+                    <p>HTML</p>
+
+                    <pre class="brush:html">
+                        &lt;div id="select-boxes"&gt;
+                            <div class="form-group">
+                                <select style="padding: 8px">
+                                    <option value="">- Select -</option>
+                                    <option value="1">Select option 1</option>
+                                    <option value="2">Select option 2</option>
+                                    <option value="3">Select option 3</option>
+                                </select>
+                            </div>
+                        &lt;/div&gt;
+                    </pre>
+
+                    <p>JavaScript</p>
+
+                    <pre class="brush:javascript">
+                        new $.Zebra_TransForm($('#select-boxes select'));
+
+                        // to style *all* stylable elements pass no arguments to the constructor, like:
+                        //new $.Zebra_TransForm();
+                    </pre>
+
+                    <p>Result</p>
+
+                    <p>
+                        Notice that pressing <code>up</code> or <code>down</code> works as expected, as well as
+                        using <code>F4</code> for opening the drop-down
+                    </p>
+
+                    <br><div id="select-boxes">
+                        <div class="form-group">
+                            <select style="padding: 8px">
+                                <option value="">- Select -</option>
+                                <option value="1">Select option 1</option>
+                                <option value="2">Select option 2</option>
+                                <option value="3">Select option 3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="top">
+                        <a href="#top" class="small">⯅ To the top</a>
+                    </div>
+
+                    <br>
+
+                    <p class="text-center">copyright &copy; 2011 - 2018 <a href="https://github.com/stefangabos/">stefan gabos</a></p>
+
+                    <br><br>
+
+                </div>
+
+            </div>
 
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="../dist/zebra_transform.min.js"></script>
         <script src="examples.js"></script>
 
