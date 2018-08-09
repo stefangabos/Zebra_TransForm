@@ -8,7 +8,7 @@
 
 > This plugin is mainly intended to be used for styling checkboxes, radio buttons and select boxes in older versions of Internet Explorer, like IE7 and IE8, but it can also be used in other browser if you want to consistently style these form controls cross browser.
 
-**Zebra TransForm** is a tiny (~5KB minified) plugin for jQuery for styling the appearance of check boxes, radio buttons and select boxes without sacrificing functionality and accessibility. This jQuery plugin works by overlaying stylable elements over the native controls. It works in sync with the form's original elements copying the attached event handlers, preserving the tabindex, giving visual feedback when focused, being accessible via keyboard, and looking and behaving in the same way in all major browsers – Chrome, Firefox, Safari, Edge, Opera and Internet Explorer 7+ (in IE6 it will not replace original elements).
+**Zebra TransForm** is a tiny (~5KB minified) jQuery plugin for styling the appearance of check boxes, radio buttons and select boxes without sacrificing functionality and accessibility. This jQuery plugin works by overlaying stylable elements over the native controls. It works in sync with the form's original elements copying the attached event handlers, preserving the tabindex, giving visual feedback when focused, being accessible via keyboard, and looking and behaving in the same way in all major browsers – Chrome, Firefox, Safari, Edge, Opera and Internet Explorer 7+ (in IE6 it will not replace original elements).
 
 ## Demo
 
