@@ -70,7 +70,7 @@ Load the style sheet file from a local source
 <!-- for the most recent version -->
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/zebra_transforma@2.0.0/dist/css/zebra_transform.min.css">
+  href="https://cdn.jsdelivr.net/npm/zebra_transform@3.0.0/dist/css/zebra_transform.min.css">
 
 <!-- replacing "min" with "src" will serve you the non-compressed version -->
 ```
