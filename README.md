@@ -12,7 +12,7 @@
 
 ## Demo
 
-See the [demos](https://stefangabos.github.io/Zebra_Transform/index.html)
+See the [demos](https://stefangabos.github.io/Zebra_TransForm/index.html)
 
 ## Requirements
 
