@@ -1,3 +1,7 @@
+## version 3.0.1 (TBA)
+
+- added the `update` method for updating styling after a checkbox or radio button's status is manually updated
+
 ## version 3.0.0 (August 08, 2018)
 
 - performance improvements and source code tweaks
