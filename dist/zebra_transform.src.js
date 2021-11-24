@@ -624,7 +624,7 @@
 
             }
 
-        }
+        };
 
         // this will hold the merged default, and user-provided options
         plugin.settings = {};
