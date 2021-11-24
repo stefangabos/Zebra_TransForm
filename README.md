@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/stefangabos/zebrajs/master/docs/images/logo.png" alt="zebrajs" align="right">
 
-# Zebra TransForm &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Zebra_TransForm,%20a%20tiny%20jQuery%20plugin%20for%20replacing%20checkboxes,%20radio%20buttons%20and%20select%20boxes%20in%20IE7%2B&url=https://github.com/stefangabos/Zebra_TransForm&via=stefangabos&hashtags=jquery,javascript)
+# Zebra TransForm &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A+tiny+jQuery+plugin+for+replacing+checkboxes,+radio+buttons+and+select+boxes+in+IE7%2B&url=https://github.com/stefangabos/Zebra_TransForm&via=stefangabos&hashtags=jquery,javascript)
 
 *A tiny jQuery plugin for replacing and beautifying checkboxes, radio buttons, and select boxes in IE7+*
 
