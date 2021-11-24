@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/stefangabos/zebrajs/master/docs/images/logo.png" alt="zebrajs" align="right">
 
-# Zebra TransForm &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Zebra_TransForm,%20a%20tiny%20jQuery%20plugin%20for%20replacing%20checkboxes,%20radio%20buttons%20and%20select%20boxes%20in%20IE7%2B&url=https://github.com/stefangabos/Zebra_TransForm&via=stefangabos&hashtags=checkbox,radio-buttons,select,transform,query)
+# Zebra TransForm &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Zebra_TransForm,%20a%20tiny%20jQuery%20plugin%20for%20replacing%20checkboxes,%20radio%20buttons%20and%20select%20boxes%20in%20IE7%2B&url=https://github.com/stefangabos/Zebra_TransForm&via=stefangabos&hashtags=jquery,javascript)
 
 *A tiny jQuery plugin for replacing and beautifying checkboxes, radio buttons, and select boxes in IE7+*
 
@@ -9,6 +9,15 @@
 > This plugin is mainly intended to be used for styling checkboxes, radio buttons and select boxes in older versions of Internet Explorer, like IE7 and IE8, but it can also be used in other browser if you want to consistently style these form controls cross browser.
 
 **Zebra TransForm** is a tiny (~5KB minified) jQuery plugin for styling the appearance of check boxes, radio buttons and select boxes without sacrificing functionality and accessibility. This jQuery plugin works by overlaying stylable elements over the native controls. It works in sync with the form's original elements copying the attached event handlers, preserving the tabindex, giving visual feedback when focused, being accessible via keyboard, and looking and behaving in the same way in all major browsers – Chrome, Firefox, Safari, Edge, Opera and Internet Explorer 7+ (in IE6 it will not replace original elements).
+
+## 🎂 Support the development of this project
+
+Your support means a lot and it keeps me motivated to keep working on open source projects.<br>
+If you like this project please ⭐ it by clicking on the star button at the top of the page.<br>
+If you are feeling generous, you can buy me a coffee by donating through PayPal, or you can become a sponsor.<br>
+Either way - **Thank you!** 🎉
+
+[<img src="https://img.shields.io/github/stars/stefangabos/zebra_transform?color=green&label=star%20it%20on%20GitHub" width="132" height="20" alt="Star it on GitHub">](https://github.com/stefangabos/Zebra_TransForm) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MRK6AVGGRV7NU) [<img src="https://img.shields.io/badge/-Sponsor-fafbfc?logo=GitHub%20Sponsors">](https://github.com/sponsors/stefangabos)
 
 ## Demo
 
@@ -161,10 +170,6 @@ var zt = new $.Zebra_TransForm();
 
 zt.update();
 ```
-
-## Support the development of this project
-
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKMCMRZB493LY)
 
 ## Sponsors
 
