@@ -1,6 +1,6 @@
 {
   "name": "zebra_transform",
-  "description": "A tiny jQuery plugin for replacing and beautifying checkboxes, radio buttons, and select boxes",
+  "description": "A tiny jQuery plugin for replacing and beautifying check boxes, radio buttons, and select boxes in IE7+",
   "author": {
     "name": "Stefan Gabos",
     "email": "contact@stefangabos.ro"
