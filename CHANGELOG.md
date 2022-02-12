@@ -1,4 +1,4 @@
-## version 3.0.1 (TBA)
+## version 3.0.1 (February 12, 2022)
 
 - added the `update` method for updating styling after a checkbox or radio button's status is manually updated
 
