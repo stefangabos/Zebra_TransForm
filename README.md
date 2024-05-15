@@ -6,7 +6,7 @@
 
 [![npm](https://img.shields.io/npm/v/zebra_transform.svg)](https://www.npmjs.com/package/zebra_transform) [![Total](https://img.shields.io/npm/dt/zebra_transform.svg)](https://www.npmjs.com/package/zebra_transform) [![Monthly](https://img.shields.io/npm/dm/zebra_transform.svg)](https://www.npmjs.com/package/zebra_transform) [![](https://data.jsdelivr.com/v1/package/npm/zebra_transform/badge)](https://www.jsdelivr.com/package/npm/zebra_transform) [![License](https://img.shields.io/npm/l/zebra_transform.svg)](https://github.com/stefangabos/zebra_transform/blob/master/LICENSE.md)
 
-> This plugin is mainly intended to be used for styling checkboxes, radio buttons and select boxes in older versions of Internet Explorer, like IE7 and IE8, but it can also be used in other browser if you want to consistently style these form controls cross browser.
+> This plugin is mainly intended to be used for styling checkboxes, radio buttons and select boxes in older versions of Internet Explorer, like IE7 and IE8, but it can also be used in other browser if you want to consistently style these form controls cross-browser.
 
 **Zebra TransForm** is a tiny (~5KB minified) jQuery plugin for styling the appearance of check boxes, radio buttons and select boxes without sacrificing functionality and accessibility. This jQuery plugin works by overlaying stylable elements over the native controls. It works in sync with the form's original elements copying the attached event handlers, preserving the tabindex, giving visual feedback when focused, being accessible via keyboard, and looking and behaving in the same way in all major browsers – Chrome, Firefox, Safari, Edge, Opera and Internet Explorer 7+ (in IE6 it will not replace original elements).
 
