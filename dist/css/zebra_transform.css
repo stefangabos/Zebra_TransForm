@@ -7,7 +7,7 @@
 .Zebra_TransForm_Radio_Disabled,
 .Zebra_TransForm_Radio_Dot,
 .Zebra_TransForm_Radio_Focus {
-    background-image: url(sprite.png);
+    background-image: url("sprite.png");
     background-repeat: no-repeat
 }
 .Zebra_TransForm_Checkbox,
