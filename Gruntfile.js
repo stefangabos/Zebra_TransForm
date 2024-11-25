@@ -25,14 +25,16 @@ module.exports = function(grunt) {
 
         /***************************************************************************************************************
          *  SASS
-         *  https://www.npmjs.org/package/grunt-sass
+         *  https://www.npmjs.org/package/grunt-sass-modern
          **************************************************************************************************************/
         'sass': {
+            options: {
+                implementation: sass,
+                api: 'modern',
+            },
             expanded: {
                 options: {
-                    implementation: sass,
-                    outputStyle: 'expanded',
-                    indentWidth: 4
+                    style: 'expanded',
                 },
                 files: {
                     'dist/css/zebra_transform.css': 'src/css/zebra_transform.scss'
@@ -40,8 +42,7 @@ module.exports = function(grunt) {
             },
             minified: {
                 options: {
-                    implementation: sass,
-                    outputStyle: 'compressed'
+                    style: 'compressed'
                 },
                 files: {
                     'dist/css/zebra_transform.min.css': 'src/css/zebra_transform.scss'
@@ -54,19 +55,21 @@ module.exports = function(grunt) {
          *  https://github.com/gruntjs/grunt-contrib-cssmin
          **************************************************************************************************************/
         'cssmin': {
+            options: {
+                compatibility: {
+                    properties: {
+                        ieBangHack: true,
+                        ieFilters: true,
+                        iePrefixHack: true,
+                        ieSuffixHack: true
+                    },
+                    selectors: {
+                        ie7Hack: true
+                    }
+                },
+            },
             beautify: {
                 options: {
-                    compatibility: {
-                        properties: {
-                            ieBangHack: true,
-                            ieFilters: true,
-                            iePrefixHack: true,
-                            ieSuffixHack: true
-                        },
-                        selectors: {
-                            ie7Hack: true
-                        }
-                    },
                     format: {
                         breaks: {
                             afterAtRule: true,
@@ -94,20 +97,6 @@ module.exports = function(grunt) {
                 }
             },
             minify: {
-                options: {
-                    compatibility: {
-                        properties: {
-                            ieBangHack: true,
-                            ieFilters: true,
-                            iePrefixHack: true,
-                            ieSuffixHack: true
-                        },
-                        selectors: {
-                            ie7Hack: true
-                        }
-                    },
-                    level: 2
-                },
                 files: {
                     'dist/css/zebra_transform.min.css': 'dist/css/zebra_transform.min.css'
                 }
@@ -210,7 +199,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-notify');
-    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-sass-modern');
 
     grunt.registerTask('default', ['sass', 'cssmin', 'eslint', 'jshint', 'uglify', 'copy', 'watch']);
 
